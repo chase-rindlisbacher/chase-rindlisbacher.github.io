@@ -3,6 +3,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './App.css'
 import MainPage from "./components/MainPage";
 import { CharactersDataProvider } from "./context/CharactersDataProvider";
+import CharacterInfoHome from "./components/CharacterInfoHome";
+import GameCards from "./components/GameCards";
+import HangmanGame from "./components/Hangman";
+// import GameCards from "./components/GameCards";
 
 /* 
 *                  Private Helpers
@@ -18,7 +22,18 @@ export default function App() {
       element: <MainPage />,
       errorElement: <ErrorPage />,
       children: [
-        { path: "characterInfo", }
+        {
+          path: "",  // The default route for displaying game cards
+          element: <GameCards />  // This will show game cards on the home page
+        },
+        {
+          path: "characterInfoHome",  // Example additional route
+          element: <CharacterInfoHome />
+        },
+        {
+          path: "hangman",
+          element: <HangmanGame />
+        }
       ]
     }
   ]);

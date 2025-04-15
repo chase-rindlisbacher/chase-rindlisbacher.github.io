@@ -15,8 +15,8 @@ export interface Character {
     height: string | null;
     realm: string | null;
     spouse: string | null;
-    movies: [string] | null;
-    quotes: [string] | null;
+    movies: Movie[] | null;
+    quotes: Quote[] | null;
 }
 
 export interface ApiCharacter {
@@ -49,6 +49,15 @@ export type Quote = {
     character: string | null;
 }
 
+export type ApiQuoteResponse = {
+    docs: Quote[];
+    total: number;
+    limit: 1000;
+    offset: 0;
+    page: 1;
+    pages: 1;
+}
+
 export type Movie = {
     _id: string;
     name: string;
@@ -65,3 +74,14 @@ export interface GameCardProps {
     gameDescription: string;
     gameImageUrl: string;
 }
+
+export type HangmanGameState = {
+    randomName: string; // The random word selected for the game
+    underScoredName: string; // The name with underscores representing unguessed letters
+    guesses: string[]; // Array of letters guessed by the user
+    guessCount: number; // The number of guesses made so far
+    dictAlphabet: number[]; // An array representing whether a letter has been guessed (0 or 1)
+    isWin: boolean; // Whether the player has won the game
+    isGameOver: boolean; // Whether the game is over
+    feedbackMessage: string; // Feedback per guess given
+};

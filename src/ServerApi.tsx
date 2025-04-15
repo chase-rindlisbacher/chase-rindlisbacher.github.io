@@ -2,7 +2,7 @@
  *                      IMPORTS
  */
 import { useEffect, useState } from "react";
-import { Character, Movie, Quote, ApiCharacterResponse } from "./Types";
+import { Character, ApiCharacterResponse, ApiQuoteResponse } from "./Types";
 
 /*----------------------------------------------------------------------
  *                      CONSTANTS
@@ -10,6 +10,19 @@ import { Character, Movie, Quote, ApiCharacterResponse } from "./Types";
 const URL_BASE = 'https://the-one-api.dev/v2/'
 const API_BEARER_TOKEN = import.meta.env.VITE_LOTR_API_BEARER_TOKEN;
 const URL_CHARACTERS = `${URL_BASE}character`
+//5cd99d4bde30eff6ebccfea4/quote
+
+/*----------------------------------------------------------------------
+ *                      PRIVATE FUNCTIONS
+ */
+const encodedCharacterUrl = function (
+    characterId: string,
+): string {
+    if (characterId !== undefined) {
+        return `${URL_BASE}${URL_CHARACTERS}/${characterId}/quote`
+    }
+    return "";
+}
 
 /*----------------------------------------------------------------------
  *                      PUBLIC HOOKS
@@ -17,8 +30,6 @@ const URL_CHARACTERS = `${URL_BASE}character`
 export const useFetchCharactersData = () => {
     const [characters, setCharacters] = useState<Character[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-
-    
   
     useEffect(() => {
         fetch(URL_CHARACTERS, {
@@ -52,3 +63,31 @@ export const useFetchCharactersData = () => {
 
     return { characters, isLoading };
 };
+
+export async function fetchCharactersQuotesAndMovies(
+    characterId: string, 
+    character: Character,
+): Promise<Character> {
+    fetch(
+        encodedCharacterUrl(characterId), {
+        headers: { Authorization: `Bearer ${API_BEARER_TOKEN}` }
+    })
+    .then((response) => response.json())
+    .then((jsonData: ApiQuoteResponse) => {
+        if (jsonData.docs.length > 0) {
+            const quotes = jsonData.docs.map((quote) => ({
+                _id: quote._id,
+                dialog: quote.dialog,
+                movie: quote.movie,
+                character: quote.character
+            }));
+            if (quotes.length >= 1) {
+                character.quotes = quotes;
+            }
+        }
+    })
+    .catch((error) => {
+        console.error("Error fetching Character's quotes: ",error);
+    });
+    return character
+}

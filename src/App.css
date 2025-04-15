@@ -8,24 +8,29 @@
 /* I prompted chatGPT to give me a banner's css to make it span the whole page
    and make text in that banner have a LOTR like style.*/
 
+main {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 20vh 1vh auto;
+  grid-template-areas:
+      "header header"
+      "nav nav"
+      "gamearea gamearea";
+}
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+@media screen and (max-width: 44rem) {
+    main {
+        grid-template-columns: auto;
+        grid-template-rows: 10vh 2vh auto;
+        grid-template-areas:
+            "header"
+            "nav"
+            "gamearea"
+    }
 }
 
 .card {
   padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

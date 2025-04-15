@@ -1,0 +1,36 @@
+/* Used Professor Liddle's styling for breadcrumbs */
+.crumbs-wrapper {
+    flex: 1 1 30%;
+    z-index: 10;
+    grid-area: nav;
+}
+
+.crumbs {
+    padding-inline-start: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+}
+
+@media screen and (max-width: 44rem) {
+    header .crumbs {
+        margin: 0.56rem 0;
+    }
+}
+
+.crumbs ul {
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+.crumbs li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+}
+
+.crumbs li:not(:first-child)::before {
+    content: ">";
+    padding: 0.3em;
+}
