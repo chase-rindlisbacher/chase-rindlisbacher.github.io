@@ -1,0 +1,68 @@
+/* General styles */
+.cipher-game-container {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background-color: #3e3b3b;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #e4e4e4;
+  }
+  
+  .game-text {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  input[type='text'] {
+    font-size: 1.2rem;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    width: 60%;
+    text-align: center;
+  }
+  
+  input[type='text']:focus {
+    outline: none;
+    border-color: #4caf50;
+  }
+  
+  .feedback-message {
+    color: #d9534f;
+    font-weight: bold;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .reset-button {
+    background-color: #f0ad4e;
+  }
+  
+  .reset-button:hover {
+    background-color: #ec971f;
+  }
+  

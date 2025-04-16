@@ -98,3 +98,8 @@ export type HangmanGameState = {
     feedbackMessage: string; // Feedback per guess given
     incorrectGuesses: number;
 };
+
+export type Riddle = {
+    riddle: string,
+    answer: string
+}

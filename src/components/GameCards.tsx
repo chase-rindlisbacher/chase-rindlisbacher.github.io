@@ -15,6 +15,18 @@ export default function GameCards() {
             gameName: 'LOTR Hangman',
             gameDescription: "Play Lord of the Rings themed hangman. You have up to 7 mistakes to make before you send a hero to their death. Guess the character first name before then so they can survive.",
             gameImageUrl: '/lotr-hangman-image.jpg'
+        },
+        {
+            gameLink: 'riddles',
+            gameName: 'LOTR Riddles with Gollum',
+            gameDescription: "In order to survive, you must best the wretched creature Gollum in a game of riddles. If you don't, he says he'll eat you! He appears hungry enough to do so. Yikes!",
+            gameImageUrl: '/gollum-image.jpg'
+        },
+        {
+            gameLink: 'ciphers',
+            gameName: 'LOTR Themed Math Ciphers',
+            gameDescription: "Most orcs aren't very intelligent, so they need a lot of practice to do simple math correctly. Let's see if you're smarter than the average orc.",
+            gameImageUrl: '/the-one-ring.png'
         }
     ];
     return (

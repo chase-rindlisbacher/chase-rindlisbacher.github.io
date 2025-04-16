@@ -1,0 +1,103 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #f4e1d2;
+}
+  
+.riddle-game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    padding: 40px;
+    background-color: #2a1a37; /* Dark parchment-like background */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+  
+.riddle-display {
+    text-align: center;
+}
+  
+.riddle-text {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+  
+/* Input Field Styling */
+.riddle-input {
+    font-size: 1.5rem;
+    padding: 15px;  /* Increased padding for better size */
+    margin-top: 10px;
+    width: 100%;  /* Full width of the parent container */
+    max-width: 500px; /* Optional: Max width to prevent it from growing too large */
+    min-width: 400px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+}
+
+.riddle-input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+  
+.submit-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+  
+.submit-button:hover {
+    background-color: #45a049;
+}
+  
+.feedback-message {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #f4e1d2;
+}
+  
+.win-message {
+    color: #28a745; /* Green for winning message */
+}
+  
+.lose-message {
+    color: #d9534f; /* Red for losing message */
+}
+  
+  /* For smaller screens */
+@media (max-width: 600px) {
+    .riddle-game-container {
+        padding: 20px;
+    }
+  
+    h1 {
+        font-size: 2.5rem;
+    }
+  
+    .riddle-input {
+        width: 80%;
+        min-width: 300px;
+    }
+  }
+  

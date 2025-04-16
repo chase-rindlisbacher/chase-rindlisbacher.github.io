@@ -38,7 +38,7 @@ export default function CharacterInfo() {
 
     // Show loading state if character data is not yet loaded
     if (!character) {
-        return <div>Loading character details...</div>;
+        return <div className="character-info">Loading character details...</div>;
     }
 
     return (
@@ -75,7 +75,7 @@ export default function CharacterInfo() {
 
             {/* Quotes Section */}
             <div className={`character-quotes ${showQuotes ? "" : "collapsed"}`}>
-                <h3><strong>Character's Quotes:</strong></h3>
+                <h3><strong>{character.name}'s Quotes:</strong></h3>
                 <ul className="character-quotes">
                 {character.quotes && character.quotes.length > 0 ? (
                     character.quotes.map((quote) => (

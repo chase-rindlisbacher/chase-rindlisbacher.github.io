@@ -33,7 +33,7 @@ export default function CharacterInfoHome() {
   }, [])
 
   if (isLoading) {
-    return <div>Loading characters...</div>;
+    return <div className="character-info-home">Loading characters...</div>;
   }
 
   return (

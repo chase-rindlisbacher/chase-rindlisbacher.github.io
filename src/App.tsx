@@ -7,6 +7,8 @@ import CharacterInfoHome from "./components/CharacterInfoHome";
 import GameCards from "./components/GameCards";
 import HangmanGame from "./components/Hangman";
 import CharacterInfo from "./components/CharacterInfo";
+import RiddleGame from "./components/RiddleGame";
+import CipherGame from "./components/CipherGame";
 // import GameCards from "./components/GameCards";
 
 /* 
@@ -38,6 +40,14 @@ export default function App() {
         {
           path: "characterInfo/:characterId",
           element: <CharacterInfo />
+        },
+        {
+          path: "riddles",
+          element: <RiddleGame />
+        },
+        {
+          path: "ciphers",
+          element: <CipherGame />
         }
       ]
     }
