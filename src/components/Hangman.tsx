@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { HangmanGameState } from '../Types';
+import "./Hangman.css"
 
 
 // List of LOTR character names for the game

@@ -3,12 +3,20 @@
     flex: 1 1 30%;
     z-index: 10;
     grid-area: nav;
+    background-color: #4E3629;
+    padding-bottom: 1%;
+    padding-top: 1%;
 }
 
 .crumbs {
     padding-inline-start: 1rem;
     font-weight: 400;
     letter-spacing: 0.03em;
+    color: white;
+}
+
+.link:hover {
+    color: rgb(201, 0, 0) !important;
 }
 
 @media screen and (max-width: 44rem) {

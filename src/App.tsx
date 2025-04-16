@@ -6,6 +6,7 @@ import { CharactersDataProvider } from "./context/CharactersDataProvider";
 import CharacterInfoHome from "./components/CharacterInfoHome";
 import GameCards from "./components/GameCards";
 import HangmanGame from "./components/Hangman";
+import CharacterInfo from "./components/CharacterInfo";
 // import GameCards from "./components/GameCards";
 
 /* 
@@ -33,6 +34,10 @@ export default function App() {
         {
           path: "hangman",
           element: <HangmanGame />
+        },
+        {
+          path: "characterInfo/:characterId",
+          element: <CharacterInfo />
         }
       ]
     }

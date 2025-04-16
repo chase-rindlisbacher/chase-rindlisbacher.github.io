@@ -10,7 +10,7 @@
 }
 
 .game-card {
-    border: 1px solid #ddd; /* Light border around cards */
+    border: 1px solid #000000; /* Light border around cards */
     border-radius: 8px; /* Rounded corners for the cards */
     background-color: #f9f9f9; /* Light background color */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */

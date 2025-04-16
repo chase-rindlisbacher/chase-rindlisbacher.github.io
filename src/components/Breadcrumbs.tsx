@@ -11,19 +11,19 @@ export default function Breadcrumbs() {
     const crumbs = [];
 
     // Check if the current path is the root path
-    if (pathnames[1] !== "") {
+    if (pathnames[1] !== "" && pathnames[1] !== 'characterInfo') {
         for (const pathname of pathnames) {
             if (pathname === "") {
                 crumbs.push(
                     <li key={`bc${HOME_BREADCRUMB}`}>
-                        <Link to="/">{HOME_BREADCRUMB}</Link>
+                        <Link className="link" style={{color: "white"}} to="/">{HOME_BREADCRUMB}</Link>
                     </li>
                 );
             }
             else {
                 crumbs.push(
                     <li key={`bc${pathname}`}>
-                        <Link to={`/${pathname}`}>{pathname}</Link>
+                        <Link className="link" style={{color: "white"}} to={`/${pathname}`}>{pathname}</Link>
                     </li>
                 )
             }
@@ -39,6 +39,22 @@ export default function Breadcrumbs() {
             </div>
         );
     }
+    else if (pathnames[1] !== "") {
+        return (
+            <div className="crumbs-wrapper">
+                <div className="crumbs">
+                    <ul>
+                        <li key={`bc${HOME_BREADCRUMB}`}>
+                            <Link className="link" style={{color: "white"}} to="/">{HOME_BREADCRUMB}</Link>
+                        </li>
+                        <li key={`bccharacterInfoHome`}>
+                            <Link className="link" style={{color: "white"}} to={`/characterInfoHome`}>characterInfoHome</Link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        )
+    }
 
-    return <div></div>;
+    return <div className="crumbs-wrapper"></div>;
 }

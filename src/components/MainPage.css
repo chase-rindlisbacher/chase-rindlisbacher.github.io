@@ -1,3 +1,5 @@
 .main-content {
+    padding-top:3%;
     grid-area: gamearea;
+    background-color: #4E3629;
 }
