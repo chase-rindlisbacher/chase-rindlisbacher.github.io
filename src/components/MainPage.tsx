@@ -13,7 +13,7 @@ export default function MainPage() {
             <Breadcrumbs />
             <div className="main-content">
                 {/* This is where the dynamic content will be injected */}
-                <Outlet />  {/* The selected game's content will render here based on the route */}
+                <Outlet /> {/* The selected game's content will render here based on the route */}
             </div>
         </main>
     );

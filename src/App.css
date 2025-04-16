@@ -23,11 +23,21 @@ main {
 @media screen and (max-width: 600px) {
     main {
         grid-template-columns: auto;
-        grid-template-rows: 10vh 2vh auto;
+        grid-template-rows: 10vh auto 5vh;
         grid-template-areas:
             "header"
-            "nav"
             "gamearea"
+            "nav";
+        overflow: auto;
+    }
+
+    breadcrumbs {
+      position: fixed; 
+      bottom: 0;
+      right: 0;
+      margin-bottom: 2%;
+      z-index: 1000;
+      width: auto;
     }
 }
 
