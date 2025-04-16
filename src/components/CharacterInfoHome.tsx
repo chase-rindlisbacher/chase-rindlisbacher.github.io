@@ -52,11 +52,9 @@ export default function CharacterInfoHome() {
             {filteredCharacters.length > 0 ? (
                 filteredCharacters.map((character) => (
                     <Link className="link" to={`/characterInfo/${character._id}`}>
-                        <li key={character._id} className="character-item">
+                        <li key={`cih${character._id}`} className="character-item">
                             {/* Use Link to navigate to the character's detailed info page */}
-
                             {character.name}
-
                         </li>
                     </Link>
                 ))
