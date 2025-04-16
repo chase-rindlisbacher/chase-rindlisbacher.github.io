@@ -21,7 +21,7 @@ export default function HangmanGame() {
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        startGame();
+        resetGame();
     },[]);
   
     const validGuess = (guess: string): boolean => {
@@ -33,7 +33,7 @@ export default function HangmanGame() {
     };
   
     // Start the game
-    const startGame = () => {
+    const resetGame = () => {
       const randomName = lotrNames[Math.floor(Math.random() * lotrNames.length)];
       const underScoredName = '_'.repeat(randomName.length);
       
@@ -142,7 +142,7 @@ export default function HangmanGame() {
     return (
         <div className='hangman'/* style={{backgroundImage:"url('/one-ring-timeline.avif')"}} */>
             <h1>Lord of the Rings Hangman</h1>
-            <button onClick={startGame}>Start Game</button>
+            <button onClick={resetGame}>Reset Game</button>
         
             {/* Game interface */}
             {!gameState.isGameOver && !gameState.isWin && (
