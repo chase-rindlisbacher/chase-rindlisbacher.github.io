@@ -20,7 +20,7 @@ export default function CharacterInfo() {
             if (selectedCharacter) {
                 // Fetch additional details (quotes, movies) or retrieve from cache
                 const cachedCharacter = cachedCharacters[selectedCharacter._id];
-                if (!cachedCharacter || cachedCharacter.quotes === null) {
+                if (!cachedCharacter) {
                     fetchCharactersQuotesAndMovies(characterId, selectedCharacter, movies).then(({ character, characterMovies }) => {
                         setCharacter(character);
                         setCharacterMovies(characterMovies); // Set the movies associated with this character
