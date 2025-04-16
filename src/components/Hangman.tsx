@@ -16,6 +16,7 @@ export default function HangmanGame() {
       isWin: false,
       isGameOver: false,
       feedbackMessage: '', // User feedback message
+      incorrectGuesses: 0,
     });
     const [inputValue, setInputValue] = useState(''); // State for input value
     const inputRef = useRef<HTMLInputElement>(null);
@@ -46,6 +47,7 @@ export default function HangmanGame() {
         isWin: false,
         isGameOver: false,
         feedbackMessage: '', // Clear feedback message when a new game starts
+        incorrectGuesses: 0,
       });
       setInputValue(''); // Reset for starting new game.
       inputRef.current?.focus();
@@ -56,81 +58,90 @@ export default function HangmanGame() {
         if (letter === '') {
             setGameState(prevState => ({
                 ...prevState,
-                feedbackMessage: "Please make sure you guess a letter. Try again!"
-            }))
-            return 
+                feedbackMessage: 'Please make sure you guess a letter. Try again!',
+            }));
+            return;
         }
         if (gameState.isGameOver) return;
-        
+    
         const valid = validGuess(letter);
-        
-        if (valid != false) {
+        if (valid) {
             // Check if the letter has already been guessed
             letter = letter.toLocaleLowerCase();
             if (gameState.guesses.includes(letter)) {
                 setGameState(prevState => ({
-                ...prevState,
-                feedbackMessage: "You already guessed that letter. Try again!",
+                    ...prevState,
+                    feedbackMessage: 'You already guessed that letter. Try again!',
                 }));
                 return;
             }
-        
+    
             // Update guesses array
             const newGuesses = [...gameState.guesses, letter];
             const randomNameArray = [...gameState.randomName];
             let updatedUnderScoredName = gameState.underScoredName.split('');
-            
+    
             // Update the underscores based on the guess
             let letterFound = false;
             for (let i = 0; i < randomNameArray.length; i++) {
                 if (randomNameArray[i] === letter) {
-                updatedUnderScoredName[i] = letter;
-                letterFound = true;
+                    updatedUnderScoredName[i] = letter;
+                    letterFound = true;
                 }
             }
-        
+    
             // Provide feedback based on whether the letter was found or not
             const feedbackMessage = letterFound ? `"${letter}" was found!` : `"${letter}" is not in the word!`;
-        
+    
             // Check if the word has been guessed correctly
             const newUnderScoredName = updatedUnderScoredName.join('');
             const isWin = newUnderScoredName === gameState.randomName;
             updatedUnderScoredName = [];
-        
+    
+            // If the letter was incorrect, increment incorrect guesses
+            const newIncorrectGuesses = !letterFound ? gameState.incorrectGuesses + 1 : gameState.incorrectGuesses;
+    
             if (isWin) {
                 setGameState(prevState => ({
-                ...prevState,
-                underScoredName: newUnderScoredName,
-                guesses: newGuesses,
-                guessCount: prevState.guessCount + 1,
-                isWin: true,
-                isGameOver: true,
-                feedbackMessage: `Congratulations! You guessed the word in ${prevState.guessCount + 1} guesses!`,
+                    ...prevState,
+                    underScoredName: newUnderScoredName,
+                    guesses: newGuesses,
+                    guessCount: prevState.guessCount + 1,
+                    isWin: true,
+                    isGameOver: true,
+                    feedbackMessage: `Congratulations! You guessed the word in ${prevState.guessCount + 1} guesses!`,
+                }));
+            } else if (newIncorrectGuesses >= 7) {
+                setGameState(prevState => ({
+                    ...prevState,
+                    underScoredName: newUnderScoredName,
+                    guesses: newGuesses,
+                    guessCount: prevState.guessCount + 1,
+                    incorrectGuesses: newIncorrectGuesses,
+                    isGameOver: true,
+                    feedbackMessage: `Game Over! You've made 7 incorrect guesses. The word was ${gameState.randomName}.`,
                 }));
             } else {
                 setGameState(prevState => ({
-                ...prevState,
-                underScoredName: newUnderScoredName,
-                guesses: newGuesses,
-                guessCount: prevState.guessCount + 1,
-                dictAlphabet: prevState.dictAlphabet.map((count) =>
-                    prevState.randomName.includes(letter) ? count : 0 // Increase guess count if not repeated
-                ),
-                isGameOver: prevState.guessCount >= 20, // Game over after 20 incorrect guesses
-                feedbackMessage, // Show feedback after each guess
+                    ...prevState,
+                    underScoredName: newUnderScoredName,
+                    guesses: newGuesses,
+                    guessCount: prevState.guessCount + 1,
+                    incorrectGuesses: newIncorrectGuesses,
+                    feedbackMessage,
                 }));
             }
             setInputValue('');
             inputRef.current?.focus();
-        }
-        else {
+        } else {
             setGameState(prevState => ({
                 ...prevState,
-                feedbackMessage: "Please make sure your guess is a letter. Try again!"
-            }))
-            return 
+                feedbackMessage: 'Please make sure your guess is a letter. Try again!',
+            }));
+            return;
         }
     };
+    
 
     const handleKeyPress = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter') {
@@ -142,13 +153,14 @@ export default function HangmanGame() {
     return (
         <div className='hangman'/* style={{backgroundImage:"url('/one-ring-timeline.avif')"}} */>
             <h1>Lord of the Rings Hangman</h1>
-            <button onClick={resetGame}>Reset Game</button>
+            <button className='reset-game' onClick={resetGame}>Reset Game</button>
         
             {/* Game interface */}
             {!gameState.isGameOver && !gameState.isWin && (
                 <>
                 <p>Current word: {gameState.underScoredName.split('').join(' ')}</p> {/* Adds spaces between underscores */}
                 <p>Guess Count: {gameState.guessCount}</p>
+                <p>Incorrect Guesses Remaining: {7 - gameState.incorrectGuesses}</p>
                 <p>{gameState.feedbackMessage}</p> {/* Display feedback message */}
                 <input
                     type="text"

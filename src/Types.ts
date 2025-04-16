@@ -1,5 +1,8 @@
 export type CharactersContextType = {
     characters: Character[];
+    movies: Movie[];
+    cachedCharacters: { [key: string]: Character };
+    cachedMovies: { [key: string]: Movie };
     isLoading: boolean;
 }
 
@@ -69,6 +72,15 @@ export type Movie = {
     rottenTomatoesScore: number;
 }
 
+export type ApiMovieResponse = {
+    docs: Movie[];
+    total: number;
+    limit: 1000;
+    offset: 0;
+    page: 1;
+    pages: 1;
+}
+
 export interface GameCardProps {
     gameName: string;
     gameDescription: string;
@@ -84,4 +96,5 @@ export type HangmanGameState = {
     isWin: boolean; // Whether the player has won the game
     isGameOver: boolean; // Whether the game is over
     feedbackMessage: string; // Feedback per guess given
+    incorrectGuesses: number;
 };

@@ -70,14 +70,14 @@ h1 {
     background-color: #34495e; /* Slightly lighter greyish-blue for hover */
 }
 
-.character-item a {
+.link {
     text-decoration: none;
     color: #f1c40f; /* Golden color for the links to match the LOTR theme */
     font-size: 1.2rem;
     transition: color 0.3s ease;
 }
 
-.character-item a:hover {
+.link {
     color: #e67e22; /* Light amber color on hover */
 }
 

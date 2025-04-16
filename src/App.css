@@ -20,7 +20,7 @@ main {
       "gamearea gamearea";
 }
 
-@media screen and (max-width: 44rem) {
+@media screen and (max-width: 600px) {
     main {
         grid-template-columns: auto;
         grid-template-rows: 10vh 2vh auto;

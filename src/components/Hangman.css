@@ -21,11 +21,15 @@
     margin: 0 auto;
 }
 
+.reset-game {
+    margin-bottom: 2%;
+}
+
 /* Main Game Heading */
 h1 {
     font-size: 3rem;
     color: #f1c40f; /* Gold color for the heading to give a royal and ancient feel */
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-family: 'Cinzel', serif; /* Optional: Add a medieval font for the title */
 }
 
