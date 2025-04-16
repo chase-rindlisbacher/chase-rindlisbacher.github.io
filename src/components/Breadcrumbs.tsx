@@ -56,5 +56,5 @@ export default function Breadcrumbs() {
         )
     }
 
-    return <div className="crumbs-wrapper"></div>;
+    return <div></div>;
 }
