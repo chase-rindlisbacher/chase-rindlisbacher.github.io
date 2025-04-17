@@ -4,7 +4,7 @@ To run the project, navigate to the root directory in an environment where you h
 
 VITE_LOTR_API_BEARER_TOKEN={a_valid_lotr_api_bearer_token}
 
-I will provide one to you in my project submission. The API is free to use, but they require a bearer token for certain routes on the API that the characterinformation pages require. In the root directory you are ready to run these commands:
+I will provide one to you in my project submission. The API is free to use, but they require a bearer token for certain routes on the API that the characterinformation pages require. To receive a bearer token of your own, simple navigate to this url, https://the-one-api.dev/, and sign up for the page by providing an email. It will immediately show you your Access Token upon logging in. In the root directory you are ready to run these commands:
 1. npm install
 2. npm run dev
 
