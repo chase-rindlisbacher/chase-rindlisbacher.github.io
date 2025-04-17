@@ -1,54 +1,11 @@
-# React + TypeScript + Vite
+Welcome to the Lord of the Rings, Mini-Games site! This is a typescript react app created using vite. Inside this site, you will find a Lord fo the Rings themed hangman game, a riddles game with gollum, a LOTR math cipher game, as well as a character search and details page. The character search and details pages are powered by the free Lord of the Rings api which you can read about here https://the-one-api.dev/. Once a specific character is searched, their details will be cached making searching them again a speedy and seamless experience for the user.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To run the project, navigate to the root directory in an environment where you have node installed. Create a .env file and declare this variable.
 
-Currently, two official plugins are available:
+VITE_LOTR_API_BEARER_TOKEN={a_valid_lotr_api_bearer_token}
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I will provide one to you in my project submission. The API is free to use, but they require a bearer token for certain routes on the API that the characterinformation pages require. In the root directory you are ready to run these commands:
+1. npm install
+2. npm run dev
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+The LOTR API calls are made using the Fetch and Promise API's built into javascript. Data is then stored in a charactersdatacontext object that is accessed within a charactersdataprovider context component. A custom CharactersDataContextHook was created to access the context object within 2 different components that utilized it (CharacterInfoHome & CharacterInfo). Local storage is used to cache information about specific characters that are selected from the CharacterInfoHome search area. While away from the home route, breadcrumbs are displayed in the top left of the screen for an easy navigation experience. These are moved to the bottom of the screen when viewing on a narrow device screen.
