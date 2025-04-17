@@ -41,9 +41,10 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Build
-        env: 
-          VITE_LOTR_API_BEARER_TOKEN: ${{ secrets.VITE_LOTR_API_BEARER_TOKEN }}
-        run: npm run build
+        run: |
+          echo "VITE_LOTR_API_BEARER_TOKEN=${{ secrets.VITE_LOTR_API_BEARER_TOKEN }}" > .env
+          npm run build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
