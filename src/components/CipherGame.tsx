@@ -42,6 +42,9 @@ export default function CipherGame() {
                 inputRef2.current?.focus();
             }
         }
+        else {
+            setFeedbackMessage('Please make sure your entry is a valid number.');
+        }
     };
 
     // Handle the second cipher question
@@ -53,6 +56,9 @@ export default function CipherGame() {
                 setCipher2Answer(parsedResponse);
                 setGameCompleted(true); // End the game after second question is correct
             }
+        }
+        else {
+            setFeedbackMessage('Please make sure your entry is a valid number.');
         }
     };
 

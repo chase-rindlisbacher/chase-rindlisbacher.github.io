@@ -13,7 +13,7 @@ main {
   height: 100vh;
   display: grid;
   grid-template-columns: 20% 80%;
-  grid-template-rows: 20vh 1vh auto;
+  grid-template-rows: 20vh 2vh auto;
   grid-template-areas:
       "header header"
       "nav nav"
