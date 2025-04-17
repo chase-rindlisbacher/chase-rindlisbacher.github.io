@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "LOTR-Mini-Games",
+  base: "/chase-rindlisbacher.github.io/",
   plugins: [react()],
 })
