@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import viteLogo from '/vite.svg'
 import './App.css'
 import MainPage from "./components/MainPage";
 import { CharactersDataProvider } from "./context/CharactersDataProvider";
@@ -9,7 +8,6 @@ import HangmanGame from "./components/Hangman";
 import CharacterInfo from "./components/CharacterInfo";
 import RiddleGame from "./components/RiddleGame";
 import CipherGame from "./components/CipherGame";
-// import GameCards from "./components/GameCards";
 
 /* 
 *                  Private Helpers
