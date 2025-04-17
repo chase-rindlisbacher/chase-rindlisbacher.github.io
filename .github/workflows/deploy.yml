@@ -29,7 +29,6 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node.js
@@ -45,7 +44,7 @@ jobs:
         env: 
           VITE_LOTR_API_BEARER_TOKEN: ${{ secrets.VITE_LOTR_API_BEARER_TOKEN }}
         run: npm run build
-      -name: Upload artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: "dist"
